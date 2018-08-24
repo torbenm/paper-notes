@@ -36,14 +36,14 @@ def loadJson(path, name=None):
         return json.load(f)
 
 
-def extract_words(indir, outdir):
+def extract_words(indir, outdir, pure=False):
     files = os.listdir(indir)
     os.makedirs(outdir, exist_ok=True)
     words = {}
     for idx, file in enumerate(files):
         if file.endswith("-paper.png"):
             num = file.split("-")[0]
-            words.update(process_file_for_words(indir, num, outdir))
+            words.update(process_file_for_words(indir, num, outdir, pure))
             progress(idx, len(files))
     dumpJson(outdir, words, "words")
 
@@ -64,8 +64,9 @@ def dumpJson(path, data, name):
         json.dump(data, f)
 
 
-def process_file_for_words(path, num, outdir):
-    img = cv2.imread(os.path.join(path, "{}-paper.png".format(num)))
+def process_file_for_words(path, num, outdir, pure):
+    ending = "paper" if not pure else "stripped"
+    img = cv2.imread(os.path.join(path, "{}-{}.png".format(num, ending)))
     gts = loadJson(path, "{}-truth".format(num))
     words = {}
     for i, gt in enumerate(gts):
@@ -103,15 +104,21 @@ def process_file_for_print(path, num, outdir):
 
 
 if __name__ == "__main__":
-    set_prefix("Dev  Words")
-    extract_words("./data/final/dev", "./data/words/dev")
-    set_prefix("Test Words")
-    extract_words("./data/final/test", "./data/words/test")
-    set_prefix("Train Words")
-    extract_words("./data/final/train", "./data/words/train")
-    set_prefix("Dev  Print")
-    extract_print("./data/final/dev", "./data/words/print_dev")
-    set_prefix("Test Print")
-    extract_words("./data/final/test", "./data/words/print_test")
-    set_prefix("Train Print")
-    extract_words("./data/final/train", "./data/words/print_train")
+    # set_prefix("Dev  Words")
+    # extract_words("./data/final/dev", "./data/words/dev")
+    # set_prefix("Test Words")
+    # extract_words("./data/final/test", "./data/words/test")
+    # set_prefix("Train Words")
+    # extract_words("./data/final/train", "./data/words/train")
+    set_prefix("Dev  Pure")
+    extract_words("./data/final/dev", "./data/words/pure_dev", True)
+    set_prefix("Test Pure")
+    extract_words("./data/final/test", "./data/words/pure_test", True)
+    set_prefix("Train Pure")
+    extract_words("./data/final/train", "./data/words/pure_train", True)
+    # set_prefix("Dev  Print")
+    # extract_print("./data/final/dev", "./data/words/print_dev")
+    # set_prefix("Test Print")
+    # extract_print("./data/final/test", "./data/words/print_test")
+    # set_prefix("Train Print")
+    # extract_print("./data/final/train", "./data/words/print_train")
