@@ -13,6 +13,8 @@ BASEPATH = "data/iam"
 DEFAULT_NUM_WORDS = {"center": 7, "stdv": 2}
 DEFAULT_NUM_PARAGRAPHS = {"center": 3, "stdv": 1}
 
+PADDING_RIGHT = 10
+
 OVERFLOW_HORIZ_FACTOR = {
     REGION_LEFT: 1.1,
     REGION_TOP: 1,
@@ -78,9 +80,9 @@ def _augment_paragraph(truth, words, borders, side, num_words):
                 max_y = 0
                 line_offset = word["offset"]
                 line_overheads.append(0)
-        if side == REGION_RIGHT or side == REGION_BOTTOM:
+        if side == REGION_RIGHT or side == REGION_BOTTOM or side == REGION_TOP:
             line_overheads[len(line_overheads)-1] = int(abs(np.random.normal(max(
-                line_overheads[len(line_overheads)-1], (x + word["width"]-text_rect["x"])-text_rect["w"]), 3.0)))
+                line_overheads[len(line_overheads)-1], (x + word["width"]-text_rect["x"])-text_rect["w"]+PADDING_RIGHT), 3.0)))
         if (y + word["height"] + word["offset"] - line_offset - text_rect["y"]) / OVERFLOW_VERT_FACTOR[side] > text_rect["h"]:
             continue
         positions.append({
