@@ -54,7 +54,9 @@ def create_set(subset, files, words, total):
 
 
 if __name__ == "__main__":
-
+    """ 
+    Augments Paper Note pages from given pages and IAM data
+    """
     os.makedirs(paths["dev"], exist_ok=True)
     os.makedirs(paths["train"], exist_ok=True)
     os.makedirs(paths["test"], exist_ok=True)

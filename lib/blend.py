@@ -1,4 +1,11 @@
 def blend(x, y, w, h, target, copy):
+    """
+    Blends an image (copy) with another image (target).
+    @param x The x coordinates in the target image
+    @param y The y coordinate in the target image 
+    @param w The width to copy
+    @param h The height to copy 
+    """
     th, tw = target.shape[:2]
     if x >= tw or y >= th:
         return

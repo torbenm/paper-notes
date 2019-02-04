@@ -11,6 +11,9 @@ STDV_NARROW = 2.0
 
 
 def pick_starting_point(borders, filled=[], side=None):
+    """
+        Helps to pick random starting points in the four margins
+    """
     rect = {
         "x": 0,
         "y": 0,

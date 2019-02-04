@@ -6,6 +6,11 @@ WORKING_HEIGHT = 400
 
 
 def border_detection(img):
+    """
+        Detects the margins of a given image by detecting its inner text.
+        Returns an object describing the coordinates of this
+        box of text.
+    """
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     ih, iw = img.shape
     x_factor = iw / WORKING_WIDTH
@@ -50,13 +55,3 @@ def _largest_rect(img):
             max_rect = rect
             max_area = w*h
     return max_rect
-
-
-if __name__ == "__main__":
-
-    img = cv2.imread("data/paper/png/10.1.1.716.6158-0.png", 1)
-    borders = border_detection(img)
-    print(borders)
-    # cv2.rectangle(img, (l, t), (r, b), (0, 255, 0), 1)
-    # cv2.imshow('', img)
-    # cv2.waitKey(0)

@@ -104,6 +104,13 @@ def process_file_for_print(path, num, outdir):
 
 
 if __name__ == "__main__":
+    """
+    Extracts printend and handwritten words from the Paper Notes dataset.
+    '* Words': Handwritten words that also contain printed words
+    '* Pure': Handwritten words without the printed words
+    '* Print*: Printed Words
+    """
+
     set_prefix("Dev  Words")
     extract_words("./data/final/dev", "./data/words/dev")
     set_prefix("Test Words")

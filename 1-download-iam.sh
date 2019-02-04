@@ -13,7 +13,6 @@ echo "Downloading IAM words for $1..."
 
 wget -N -P $IAM_FOLDER --user="$user" --password="$pwd" http://www.fki.inf.unibe.ch/DBs/iamDB/data/words/words.tgz
 wget -N -P $IAM_FOLDER --user="$user" --password="$pwd" http://www.fki.inf.unibe.ch/DBs/iamDB/data/ascii/ascii.tgz
-wget -N -P $IAM_FOLDER --user="$user" --password="$pwd" http://www.fki.inf.unibe.ch/DBs/iamDB/data/sentences/sentences.tgz
 
-# tar zxf $IAM_FOLDER/ascii.tgz -C $IAM_FOLDER/ascii
-# tar zxf $IAM_FOLDER/words.tgz -C $IAM_FOLDER/words
+tar zxf $IAM_FOLDER/ascii.tgz -C $IAM_FOLDER/ascii
+tar zxf $IAM_FOLDER/words.tgz -C $IAM_FOLDER/words

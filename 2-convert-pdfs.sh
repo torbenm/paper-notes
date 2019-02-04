@@ -1,10 +1,12 @@
- #!/bin/sh
+ #!/bin/bash
+ 
 PDF_LOC="data/paper/pdf/*"
 PNG_LOC="data/paper/png/"
 
 
 for f in $PDF_LOC; do mv "$f" "${f// /_}"; done
 
+mkdir -p $PNG_LOC
 rm -r $PNG_LOC/*
 for d in $PDF_LOC; do
     bname="$(basename $d)"

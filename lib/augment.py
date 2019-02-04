@@ -54,14 +54,10 @@ def _augment_paragraph(truth, words, borders, side, num_words):
     x = text_rect["x"]
     y = text_rect["y"]
     max_y = 0
-    n_words = _random(**num_words)
-    start = int(np.random.uniform(0, len(words)-n_words))
     line_offset = None
     positions = []
     i = 0
-    scaling = 1
     line_overheads = [0]
-    new_line = False
     for word in words:
         # Load word
         word_img = preprocess_word(BASEPATH, word)

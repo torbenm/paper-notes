@@ -2,6 +2,10 @@ import cv2
 import numpy as np
 from sklearn.cluster import DBSCAN
 
+"""
+Tool to detect printed words in the pages
+"""
+
 
 def trunc(a, threshold=0):
     return threshold if a < threshold else a
