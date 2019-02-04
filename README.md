@@ -7,7 +7,9 @@ It creates a mix of printed and handwritten pages by combining PDF's with data f
 As I do not own the rights to the PDFs (which are stemming from scientific papers), I cannot share them in here aswell.
 However, using the following steps, you can generate "your own".
 
-![Bilby Stampede](docs/example.png)
+<center>
+<img src="docs/example.png" width="600">
+</center>
 
 ## Generation
 
